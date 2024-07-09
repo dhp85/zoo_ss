@@ -18,7 +18,14 @@ def test_crear_entrada():
     assert entrada.precio == 0
 
 def test_crear_entrada_edad_negativa_error():
-        pass
+        try:
+                entrada = Entrada(-2)
+                assert False
+        except ValueError:
+               assert True
+             
+
+
 
 def test_crear_grupo_entradas():
         grupo = Grupo_Entrada()
@@ -26,7 +33,7 @@ def test_crear_grupo_entradas():
         assert grupo.num_entradas == 0
 
 
-def test_añadir_entradas_a_grupo():
+def test_anyadir_entradas_a_grupo():
        grupo = Grupo_Entrada()
        grupo.add_entrada(35)  
        assert grupo.num_entradas == 1
