@@ -30,11 +30,22 @@ class Entrada:
 class Grupo_Entrada():
     def __init__(self):
         self.total = 0       
-        self.num_entradas = 0       
+        self.num_entradas = 0  
+        self.tipos_entrada = {
+            TipoEntrada.BEBE: 0,
+            TipoEntrada.NIÑO: 0,
+            TipoEntrada.ADULTO: 0,
+            TipoEntrada.JUBILADO: 0
+
+        }     
 
     def add_entrada(self, edad):
         entrada = Entrada(edad)
         self.total = self.total + entrada.precio
         self.num_entradas = self.num_entradas + 1 
+        self.tipos_entrada[entrada.tipo] += 1
+
+    def cantidad_entradas_tipo(self, tipo: TipoEntrada):
+        return self.tipos_entrada[tipo]    
  
          
