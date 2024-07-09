@@ -24,7 +24,7 @@ class Entrada:
             self.tipo = TipoEntrada.JUBILADO
             self.precio = 18     
 
-class Grupo_Entrada(Entrada):
+class Grupo_Entrada():
     def __init__(self):
         self.total = 0       
         self.num_entradas = 0       
