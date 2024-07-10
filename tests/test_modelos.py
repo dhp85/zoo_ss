@@ -29,9 +29,12 @@ def test_crear_entrada_edad_negativa_error():
         except ValueError:
                assert True
         """     
+        # El codigo de arriba con with es lo mismo que lo que viene entre la comillas.
 
-def xtest_crear_entrada_edad_centenario_error():
-       pass
+def test_crear_entrada_edad_centenario_error():
+       with pytest.raises(ValueError) as excinfo:
+              Entrada(100)
+       assert str(excinfo.value) == "La edad no debe ser superior a 99 años."       
 
 
 def test_crear_grupo_entradas():
@@ -69,5 +72,35 @@ def test_cantidad_entradas_por_tipo():
        
        grupo.add_entrada(13)
        assert grupo.cantidad_entradas_tipo(TipoEntrada.ADULTO) == 2
+
+       grupo.add_entrada(13)
+       assert grupo.cantidad_entradas_tipo(TipoEntrada.ADULTO) == 3
+
+       grupo.add_entrada(70)
+       assert grupo.cantidad_entradas_tipo(TipoEntrada.JUBILADO) == 1
+
+
+
+def test_subtotal_por_tipo():
+       grupo = Grupo_Entrada()
+       grupo.add_entrada(70)
+       assert grupo.subtotal_tipo(TipoEntrada.JUBILADO) == 18
+
+       grupo.add_entrada(70)
+       assert grupo.subtotal_tipo(TipoEntrada.JUBILADO) == 36
+        
+
+       grupo.add_entrada(10)
+       assert grupo.subtotal_tipo(TipoEntrada.NIÑO) == 14
+
+
+       grupo.add_entrada(10)
+       assert grupo.subtotal_tipo(TipoEntrada.NIÑO) == 28
+
+
+       
+
+
+
              
 
