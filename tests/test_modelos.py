@@ -1,4 +1,5 @@
 from app.modelos import Entrada, TipoEntrada, Grupo_Entrada
+
 import pytest
 
 def test_crear_entrada():
