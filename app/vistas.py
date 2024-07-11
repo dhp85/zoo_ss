@@ -13,7 +13,7 @@
 10    EDAD: 
 11    CONF
 """
-from app.modelos import Grupo_Entrada, TipoEntrada
+from modelos import Grupo_Entrada, TipoEntrada
 from simple_screen import locate, Print, cls, Screen_manager, Input
 
 class VistaGrupo:
@@ -27,7 +27,7 @@ class VistaGrupo:
         locate(self.x, self.y, "TIPO             PU     Q       TOTAL")
         locate(self.x, self.y + 1, "=====================================")
         for indice, tipo in enumerate(TipoEntrada):
-            locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value:5.2f}    {self.grupo.cantidad_entradas_por_tipo(tipo):2d}     {self.grupo.subtotal_tipo(tipo):7.2f}")
+            locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value:5.2f}    {self.grupo.cantidad_entradas_tipo(tipo):2d}     {self.grupo.subtotal_tipo(tipo):7.2f}")
 
         locate(self.x, self.y + 7, "-------------------------------------")
         locate(self.x, self.y + 8, f"                      {self.grupo.num_entradas:3d}    {self.grupo.total:8.2f}")
